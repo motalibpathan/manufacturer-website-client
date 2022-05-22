@@ -7,6 +7,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import useToken from "../../hooks/useToken";
 import Loading from "../Shared/Loading";
 
 const SignUp = () => {
@@ -19,16 +20,16 @@ const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-
   const navigate = useNavigate();
+  const [token] = useToken(user || gUser);
 
   let signInError;
 
   useEffect(() => {
-    if (user || gUser) {
+    if (token) {
       navigate("/");
     }
-  }, [user, navigate, gUser]);
+  }, [token, navigate]);
 
   if (loading || gLoading || updating) {
     return <Loading />;
@@ -49,18 +50,18 @@ const SignUp = () => {
 
   return (
     <div className="md:container mx-auto p-5 flex justify-center min-h-screen items-center">
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <div class="card-body">
-          <h2 class="text-center text-2xl font-bold">Please Login</h2>
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card-body">
+          <h2 className="text-center text-2xl font-bold">Please Register</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div class="form-control w-full max-w-xs">
-              <label class="label">
-                <span class="label-text">Name</span>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">Name</span>
               </label>
               <input
                 type="text"
                 placeholder="Your Name"
-                class="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs"
                 {...register("name", {
                   required: {
                     value: true,
@@ -68,7 +69,7 @@ const SignUp = () => {
                   },
                 })}
               />
-              <label class="label">
+              <label className="label">
                 {errors.name?.type === "required" && (
                   <span className="label-text-alt text-red-500">
                     {errors.name.message}
@@ -81,14 +82,14 @@ const SignUp = () => {
                 )}
               </label>
             </div>
-            <div class="form-control w-full max-w-xs">
-              <label class="label">
-                <span class="label-text">Email</span>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">Email</span>
               </label>
               <input
                 type="text"
                 placeholder="Your Email"
-                class="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs"
                 {...register("email", {
                   required: {
                     value: true,
@@ -100,7 +101,7 @@ const SignUp = () => {
                   },
                 })}
               />
-              <label class="label">
+              <label className="label">
                 {errors.email?.type === "required" && (
                   <span className="label-text-alt text-red-500">
                     {errors.email.message}
@@ -113,14 +114,14 @@ const SignUp = () => {
                 )}
               </label>
             </div>
-            <div class="form-control w-full max-w-xs">
-              <label class="label">
-                <span class="label-text">Password</span>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">Password</span>
               </label>
               <input
                 type="password"
                 placeholder="Your Password"
-                class="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs"
                 {...register("password", {
                   required: {
                     value: true,
@@ -132,7 +133,7 @@ const SignUp = () => {
                   },
                 })}
               />
-              <label class="label">
+              <label className="label">
                 {errors.password?.type === "required" && (
                   <span className="label-text-alt text-red-500">
                     {errors.password.message}
@@ -148,19 +149,19 @@ const SignUp = () => {
             {signInError}
             <input
               type="submit"
-              class="w-full btn btn-success"
-              value={"Login"}
+              className="w-full btn btn-success"
+              value={"Signup"}
             />
             <p className="mt-2">
-              New in here ?{" "}
-              <Link className="text-success font-bold" to="/signup">
-                Signup
+              Already have an account ?{" "}
+              <Link className="text-success font-bold" to="/login">
+                Login
               </Link>{" "}
               instead
             </p>
           </form>
 
-          <div class="divider">OR</div>
+          <div className="divider">OR</div>
           <button
             onClick={() => signInWithGoogle()}
             className="uppercase btn btn-outline "

@@ -1,45 +1,50 @@
 import React, { useEffect } from "react";
 import {
-  useSignInWithEmailAndPassword,
+  useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
-const Login = () => {
+const SignUp = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
   const navigate = useNavigate();
-  const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
+
   let signInError;
 
   useEffect(() => {
     if (user || gUser) {
-      navigate(from, { replace: true });
+      navigate("/");
     }
-  }, [user, navigate, from, gUser]);
+  }, [user, navigate, gUser]);
 
-  if (loading || gLoading) {
+  if (loading || gLoading || updating) {
     return <Loading />;
   }
 
-  if (error || gError) {
+  if (error || gError || updateError) {
     signInError = (
-      <p className="text-red-500 mb-2">{error?.message || gError?.message}</p>
+      <p className="text-red-500 mb-2">
+        {error?.message || gError?.message || updateError?.message}
+      </p>
     );
   }
 
-  const onSubmit = (data) => {
-    signInWithEmailAndPassword(data.email, data.password);
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
   };
 
   return (
@@ -48,6 +53,34 @@ const Login = () => {
         <div class="card-body">
           <h2 class="text-center text-2xl font-bold">Please Login</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
+            <div class="form-control w-full max-w-xs">
+              <label class="label">
+                <span class="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Your Name"
+                class="input input-bordered w-full max-w-xs"
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "Name is required",
+                  },
+                })}
+              />
+              <label class="label">
+                {errors.name?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.name.message}
+                  </span>
+                )}
+                {errors.name?.type === "pattern" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.name.message}
+                  </span>
+                )}
+              </label>
+            </div>
             <div class="form-control w-full max-w-xs">
               <label class="label">
                 <span class="label-text">Email</span>
@@ -145,4 +178,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

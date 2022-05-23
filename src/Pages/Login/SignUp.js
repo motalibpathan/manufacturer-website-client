@@ -10,7 +10,7 @@ import auth from "../../firebase.init";
 import useToken from "../../hooks/useToken";
 import Loading from "../Shared/Loading";
 
-const SignUp = () => {
+const SignUp = ({ setUser }) => {
   const {
     register,
     handleSubmit,
@@ -46,6 +46,7 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
+    setUser(user);
   };
 
   return (

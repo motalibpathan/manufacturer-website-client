@@ -1,14 +1,21 @@
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { signOut } from "firebase/auth";
-import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "./Loading";
 
-const Navbar = () => {
-  const [user, loading] = useAuthState(auth);
+const Navbar = ({ user, setUser }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      setLoading(false);
+    });
+  }, [user, setUser]);
+
   if (loading) {
     return <Loading />;
   }
@@ -41,7 +48,7 @@ const Navbar = () => {
           <li>
             <span>
               <FontAwesomeIcon icon={faUserCircle} />
-              {user?.displayName}
+              {user?.auth?.currentUser?.displayName}
             </span>
           </li>
           <li>
@@ -56,7 +63,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-gray-100">
+    <div className="navbar  border-b-2 border-gray-100">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -69,8 +76,8 @@ const Navbar = () => {
             {menuItems}{" "}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
-          Spadex Tools
+        <Link to="/" className="btn btn-ghost normal-case font-bold text-xl">
+          <span className="text-success">Spadex </span> Tools
         </Link>
       </div>
       <div className="navbar-end hidden lg:flex">

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,13 +20,14 @@ import SignUp from "./Pages/Login/SignUp";
 import Navbar from "./Pages/Shared/Navbar";
 
 function App() {
+  const [user, setUser] = useState(null);
   return (
     <div>
-      <Navbar />
+      <Navbar user={user} setUser={setUser} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp setUser={setUser} />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route
           path="/dashboard"

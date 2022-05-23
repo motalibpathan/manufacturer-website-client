@@ -53,10 +53,10 @@ const AddProduct = () => {
       });
   };
   return (
-    <div className=" p-5 rounded-md border-2 border-gary-100">
+    <div className=" p-5 rounded-md bg-white">
       <h1 className="text-2xl font-bold mb-2">Add a product</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="lg:w-4/5">
-        <div className="w-full md:flex md:space-x-5 my-5">
+        <div className="w-full md:flex md:space-x-5 ">
           <div class="form-control w-full ">
             <label class="label">
               <span class="label-text font-bold">Product Title</span>
@@ -126,7 +126,7 @@ const AddProduct = () => {
             )}
           </label>
         </div>
-        <div className="w-full md:flex md:space-x-5 my-5">
+        <div className="w-full md:flex md:space-x-5">
           <div class="form-control w-full ">
             <label class="label">
               <span class="label-text font-bold">Minimum Order Quantity</span>

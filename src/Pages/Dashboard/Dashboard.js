@@ -1,3 +1,11 @@
+import { faUser, faUserCircle } from "@fortawesome/free-regular-svg-icons";
+import {
+  faClipboardCheck,
+  faClipboardList,
+  faList,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
@@ -10,44 +18,59 @@ const Dashboard = () => {
   return (
     <div class="drawer drawer-mobile ">
       <input id="dashboard-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content p-5">
+      <div class="drawer-content p-5 ">
         <p className="mt-2 font-bold">Hello, {user?.displayName}</p>
-        <h1 className="text-2xl font-bold mb-2 text-cyan-500">
+        <h1 className="text-2xl font-bold mb-2 text-success">
           Welcome to your Dashboard
         </h1>
         <Outlet />
       </div>
-      <div class="drawer-side lg:border-r-4 lg:mr-5 ">
+      <div class="drawer-side shadow-2xl lg:mr-5">
         <label for="dashboard-drawer" class="drawer-overlay"></label>
         <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
           {!admin && (
             <>
               <li>
-                <Link to="/dashboard">My Orders</Link>
+                <Link to="/dashboard">
+                  <FontAwesomeIcon icon={faList} /> My Orders
+                </Link>
               </li>
               <li>
-                <Link to="review">Add A Review</Link>
+                <Link to="review">
+                  <FontAwesomeIcon icon={faClipboardCheck} /> Add A Review
+                </Link>
               </li>
             </>
           )}
           {admin && (
             <>
               <li>
-                <Link to="/dashboard">All Orders</Link>
+                <Link to="/dashboard">
+                  <FontAwesomeIcon icon={faList} /> All Orders
+                </Link>
               </li>
               <li>
-                <Link to="addProduct">Add Product</Link>
+                <Link to="addProduct">
+                  <FontAwesomeIcon icon={faPlus} /> Add Product
+                </Link>
               </li>
               <li>
-                <Link to="makeAdmin">Make Admin</Link>
+                <Link to="makeAdmin">
+                  <FontAwesomeIcon icon={faUser} /> Make Admin
+                </Link>
               </li>
               <li>
-                <Link to="manageProducts">Manage Product</Link>
+                <Link to="manageProducts">
+                  <FontAwesomeIcon icon={faClipboardList} /> Manage Product
+                </Link>
               </li>
             </>
           )}
           <li>
-            <Link to="profile">My Profile</Link>
+            <Link to="profile">
+              {" "}
+              <FontAwesomeIcon icon={faUserCircle} /> My Profile
+            </Link>
           </li>
         </ul>
       </div>

@@ -1,3 +1,5 @@
+import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -37,12 +39,13 @@ const Navbar = () => {
             <Link to="/dashboard">Dashboard</Link>
           </li>
           <li>
-            <button
-              className="lg:btn lg:text-white lg:btn-error"
-              onClick={() => signOut(auth)}
-            >
-              Logout
-            </button>
+            <span>
+              <FontAwesomeIcon icon={faUserCircle} />
+              {user?.displayName}
+            </span>
+          </li>
+          <li>
+            <button onClick={() => signOut(auth)}>Logout</button>
           </li>
         </>
       ) : (

@@ -94,6 +94,7 @@ const MyProfile = () => {
                 name="phone"
                 placeholder="Your phone"
                 class="input input-bordered input-success w-full max-w-xs border-2"
+                required
               />
             </div>
             <div>
@@ -103,6 +104,7 @@ const MyProfile = () => {
                 name="education"
                 placeholder="Your education"
                 class="input input-bordered input-success w-full max-w-xs border-2"
+                required
               />
             </div>
             <div>
@@ -112,6 +114,7 @@ const MyProfile = () => {
                 name="location"
                 placeholder="Your Address"
                 class="input input-bordered input-success w-full max-w-xs border-2"
+                required
               />
             </div>
             <div>
@@ -121,6 +124,7 @@ const MyProfile = () => {
                 name="linkedin"
                 placeholder="Your Linkedin profile link"
                 class="input input-bordered input-success w-full max-w-xs border-2"
+                required
               />
             </div>
           </div>

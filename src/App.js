@@ -13,6 +13,7 @@ import MyOrders from "./Pages/Dashboard/MyOrders";
 import MyProfile from "./Pages/Dashboard/MyProfile";
 import MyReviews from "./Pages/Dashboard/MyReviews";
 import Home from "./Pages/Home/Home";
+import Purchase from "./Pages/Home/Purchase";
 import Login from "./Pages/Login/Login";
 import RequireAdmin from "./Pages/Login/RequireAdmin";
 import RequireAuth from "./Pages/Login/RequireAuth";
@@ -31,6 +32,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route
+          path="/purchase/:id"
+          element={
+            <RequireAuth>
+              <Purchase />
+            </RequireAuth>
+          }
+        />
         <Route
           path="/dashboard"
           element={

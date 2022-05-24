@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { UserContext } from "../../App";
 import Loading from "../Shared/Loading";
 
@@ -15,6 +16,7 @@ const Purchase = () => {
     formState: { errors },
     setValue,
     getValues,
+    reset,
   } = useForm();
 
   useEffect(() => {
@@ -31,11 +33,41 @@ const Purchase = () => {
     return <Loading />;
   }
 
-  const { name, description, image, unitPrice, minQuantity, quantity } =
+  const { _id, name, description, image, unitPrice, minQuantity, quantity } =
     product;
 
   const onSubmit = (data) => {
-    console.log(data);
+    const order = {
+      userName: user.displayName,
+      email: user.email,
+      address: data.address,
+      phone: data.phone,
+      productId: _id,
+      orderQuantity: data.orderQuantity,
+      unitPrice: unitPrice,
+      productName: name,
+      productImg: image,
+    };
+
+    fetch(`http://localhost:5000/order`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.insertedId) {
+          const newQuantity = product.quantity - parseInt(data.orderQuantity);
+          const newProduct = { ...product };
+          newProduct.quantity = newQuantity;
+          reset();
+          setProduct(newProduct);
+          toast.success("Order placed");
+        }
+      });
   };
 
   return (
@@ -55,8 +87,8 @@ const Purchase = () => {
             <p className="font-semibold">
               Minimum Purchase Quantity: {minQuantity}
             </p>
-            <p className="font-semibold">Available Quantity: {quantity}</p>
-            <p className="text-red-500 text-2xl font-bold mt-2">
+            <p className="font-semibold ">Available Quantity: {quantity}</p>
+            <p className="text-success text-2xl font-bold mt-2">
               Price: ${unitPrice}
             </p>
           </div>
@@ -157,8 +189,8 @@ const Purchase = () => {
             </div>
             <input
               disabled={
-                parseInt(getValues("orderQuantity") || 0) > quantity ||
-                parseInt(getValues("orderQuantity") || 0) < minQuantity
+                parseInt(getValues("orderQuantity")) > quantity ||
+                parseInt(getValues("orderQuantity")) < minQuantity
               }
               type="submit"
               className="btn btn-success w-full mt-5"

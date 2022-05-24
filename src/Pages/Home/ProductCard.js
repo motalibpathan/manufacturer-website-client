@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
   const { _id, name, description, image, unitPrice, minQuantity, quantity } =
     product;
   return (
-    <div className="group rounded relative hover:shadow-2xl">
+    <div className="group rounded relative shadow-xl hover:shadow-2xl">
       {/* <div
         className="w-full h-[400px] bg-cover bg-no-repeat bg-fit"
         style={{

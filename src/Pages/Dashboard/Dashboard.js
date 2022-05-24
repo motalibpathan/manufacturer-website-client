@@ -18,15 +18,15 @@ const Dashboard = () => {
   return (
     <div class="drawer drawer-mobile">
       <input id="dashboard-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content p-5 bg-gray-50">
+      <div class="drawer-content py-5 lg:px-10 px-5 bg-gray-100">
         <p className="mt-2 font-bold">Hello, {user?.displayName}</p>
         <h1 className="text-2xl font-bold mb-2 text-success">
           Welcome to your Dashboard
         </h1>
         <Outlet />
       </div>
-      <div class="drawer-side shadow-2xl lg:mr-5">
-        <label for="dashboard-drawer" class="drawer-overlay"></label>
+      <div class="drawer-side shadow-2xl">
+        <label htmlFor="dashboard-drawer" class="drawer-overlay"></label>
         <ul class="menu p-4 overflow-y-auto w-80 bg-green-100 text-base-content">
           {!admin && (
             <>

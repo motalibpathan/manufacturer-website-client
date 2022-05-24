@@ -39,15 +39,15 @@ const MakeAdminModal = ({ selectedUser, setSelectedUser, refetch }) => {
           <div class="modal-action">
             <label
               onClick={() => setSelectedUser(null)}
-              for="admin-delete-modal"
+              htmlFor="admin-delete-modal"
               class="btn btn-error"
             >
               Cancel
             </label>
             <label
               onClick={() => handleMakeAdmin(email)}
-              for="admin-delete-modal"
-              class="btn btn-success"
+              htmlFor="admin-delete-modal"
+              class="btn btn-success cursor-pointer"
             >
               Confirm
             </label>

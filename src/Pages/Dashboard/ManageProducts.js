@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
+import DeleteProductModal from "./DeleteProductModal";
 import ProductRow from "./ProductRow";
 
 const ManageProducts = () => {
-  const { data: products, isLoading } = useQuery("products", () =>
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const {
+    data: products,
+    isLoading,
+    refetch,
+  } = useQuery("products", () =>
     fetch(`http://localhost:5000/product`, {
       method: "GET",
       headers: {
@@ -34,13 +40,27 @@ const ManageProducts = () => {
           </thead>
           <tbody>
             {products.map((product, index) => (
-              <ProductRow key={product._id} product={product} index={index} />
+              <ProductRow
+                key={product._id}
+                product={product}
+                index={index}
+                setSelectedProduct={setSelectedProduct}
+              />
             ))}
           </tbody>
         </table>
       </div>
+      {selectedProduct && (
+        <DeleteProductModal
+          selectedProduct={selectedProduct}
+          setSelectedProduct={setSelectedProduct}
+          refetch={refetch}
+        />
+      )}
     </div>
   );
 };
 
 export default ManageProducts;
+
+//selectedProduct, setSelectedProduct, refetch

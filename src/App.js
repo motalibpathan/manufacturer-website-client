@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,15 +19,17 @@ import RequireAuth from "./Pages/Login/RequireAuth";
 import SignUp from "./Pages/Login/SignUp";
 import Navbar from "./Pages/Shared/Navbar";
 
+export const UserContext = createContext();
+
 function App() {
   const [user, setUser] = useState(null);
   return (
-    <div>
-      <Navbar user={user} setUser={setUser} />
+    <UserContext.Provider value={[user, setUser]}>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp setUser={setUser} />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route
           path="/dashboard"
@@ -75,7 +77,7 @@ function App() {
         </Route>
       </Routes>
       <ToastContainer />
-    </div>
+    </UserContext.Provider>
   );
 }
 

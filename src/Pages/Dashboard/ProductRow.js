@@ -2,7 +2,7 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-const ProductRow = ({ product, index }) => {
+const ProductRow = ({ product, index, setSelectedProduct }) => {
   const { image, name, quantity, unitPrice } = product;
   return (
     <tr>
@@ -14,10 +14,14 @@ const ProductRow = ({ product, index }) => {
       <td>{quantity}</td>
       <td>${unitPrice}</td>
       <td>
-        <button className="py-2 px-4 border rounded-md bg-red-50">
+        <label
+          onClick={() => setSelectedProduct(product)}
+          htmlFor="product-delete-modal"
+          className="py-2 px-4 border rounded-md bg-red-50 cursor-pointer"
+        >
           {" "}
           <FontAwesomeIcon className="mr-2" icon={faTrashCan} /> Delete
-        </button>
+        </label>
       </td>
     </tr>
   );

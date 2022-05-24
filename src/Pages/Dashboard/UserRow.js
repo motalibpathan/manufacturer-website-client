@@ -16,7 +16,7 @@ const UserRow = ({ user, index, setSelectedUser }) => {
         ) : (
           <span className="border bg-red-50 py-2 px-5 rounded-lg ">
             <label
-              for="admin-delete-modal"
+              htmlFor="admin-delete-modal"
               className="cursor-pointer"
               onClick={() => setSelectedUser(user)}
             >

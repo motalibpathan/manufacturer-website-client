@@ -3,16 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../App";
 import auth from "../../firebase.init";
 import Loading from "./Loading";
 
-const Navbar = ({ user, setUser }) => {
+const Navbar = () => {
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = React.useContext(UserContext);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      setUser(user);
       setLoading(false);
+      setUser(user);
     });
   }, [user, setUser]);
 
@@ -52,7 +54,9 @@ const Navbar = ({ user, setUser }) => {
             </span>
           </li>
           <li>
-            <button onClick={() => signOut(auth)}>Logout</button>
+            <button className="font-bold" onClick={() => signOut(auth)}>
+              Logout
+            </button>
           </li>
         </>
       ) : (
@@ -63,7 +67,7 @@ const Navbar = ({ user, setUser }) => {
     </>
   );
   return (
-    <div className="navbar  border-b-2 border-gray-100">
+    <div className="navbar border-b-2 border-gray-100">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -71,21 +75,21 @@ const Navbar = ({ user, setUser }) => {
           </label>
           <ul
             tabIndex="0"
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 "
           >
             {menuItems}{" "}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case font-bold text-xl">
+        <Link to="/" className="btn btn-ghost normal-case font-bold text-2xl">
           <span className="text-success">Spadex </span> Tools
         </Link>
       </div>
-      <div className="navbar-end hidden lg:flex">
+      <div className="navbar-end hidden lg:flex font-bold">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
       <div className="navbar-end lg:hidden">
         <label
-          for="dashboard-drawer"
+          htmlFor="dashboard-drawer"
           class="btn btn-ghost drawer-button lg:hidden"
         >
           {menuIcon}

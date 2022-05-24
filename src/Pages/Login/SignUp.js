@@ -6,11 +6,12 @@ import {
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../App";
 import auth from "../../firebase.init";
 import useToken from "../../hooks/useToken";
 import Loading from "../Shared/Loading";
 
-const SignUp = ({ setUser }) => {
+const SignUp = ({ setuser }) => {
   const {
     register,
     handleSubmit,
@@ -22,6 +23,7 @@ const SignUp = ({ setUser }) => {
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const navigate = useNavigate();
   const [token] = useToken(user || gUser);
+  const [, setUser] = React.useContext(UserContext);
 
   let signInError;
 

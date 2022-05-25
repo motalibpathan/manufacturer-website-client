@@ -31,7 +31,7 @@ const Dashboard = () => {
           {!admin && (
             <>
               <li>
-                <Link to="/dashboard">
+                <Link to="/dashboard/myOrders">
                   <FontAwesomeIcon icon={faList} /> My Orders
                 </Link>
               </li>
@@ -45,7 +45,7 @@ const Dashboard = () => {
           {admin && (
             <>
               <li>
-                <Link to="/dashboard">
+                <Link to="/dashboard/allOrders">
                   <FontAwesomeIcon icon={faList} /> All Orders
                 </Link>
               </li>
@@ -67,7 +67,7 @@ const Dashboard = () => {
             </>
           )}
           <li>
-            <Link to="profile">
+            <Link to="/dashboard">
               {" "}
               <FontAwesomeIcon icon={faUserCircle} /> My Profile
             </Link>

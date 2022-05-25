@@ -10,7 +10,7 @@ import React from "react";
 const BusinessSummary = () => {
   return (
     <div className="md:container mx-auto p-5 mt-5">
-      <h1 className="text-4xl font-bold mb-3">Our Business Summary</h1>
+      <h1 className="text-3xl font-bold mb-3">Our Business Summary</h1>
       <div className="h-2 bg-gray-500 w-full mb-10">
         <div className="h-2 bg-success w-1/5 "></div>
       </div>

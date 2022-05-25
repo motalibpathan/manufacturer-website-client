@@ -27,7 +27,7 @@ const UserOrderRow = ({ index, order, setDeletingOrder }) => {
       <td className="p-5 border">{orderQuantity} </td>
       <td className="p-5 border">${orderQuantity * unitPrice} </td>
       <td className="p-5 border">
-        {status === "pending" || status === "shipped" ? (
+        {status === "pending" || status === "approved" ? (
           <>
             <span className="border bg-green-50 py-2 px-5 rounded-lg">
               <FontAwesomeIcon className="mr-2" icon={faMoneyBill} /> Paid

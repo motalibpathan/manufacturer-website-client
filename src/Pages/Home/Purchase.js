@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 import { UserContext } from "../../App";
 import Loading from "../Shared/Loading";
 
@@ -9,6 +8,7 @@ const Purchase = () => {
   const [user] = useContext(UserContext);
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const [inputQuantity, setInputQuantity] = useState(0);
   const [dataLoading, setDataLoading] = useState(true);
   const {
     register,
@@ -24,7 +24,7 @@ const Purchase = () => {
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
-        setValue("orderQuantity", data.minQuantity);
+        setInputQuantity(data.minQuantity);
         setDataLoading(false);
       });
   }, [id, setValue]);
@@ -43,31 +43,32 @@ const Purchase = () => {
       address: data.address,
       phone: data.phone,
       productId: _id,
-      orderQuantity: data.orderQuantity,
+      orderQuantity: inputQuantity,
       unitPrice: unitPrice,
       productName: name,
       productImg: image,
     };
+    console.log(order);
 
-    fetch(`http://localhost:5000/order`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(order),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.insertedId) {
-          const newQuantity = product.quantity - parseInt(data.orderQuantity);
-          const newProduct = { ...product };
-          newProduct.quantity = newQuantity;
-          reset();
-          setProduct(newProduct);
-          toast.success("Order placed");
-        }
-      });
+    // fetch(`http://localhost:5000/order`, {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    //   },
+    //   body: JSON.stringify(order),
+    // })
+    //   .then((res) => res.json())
+    //   .then((result) => {
+    //     if (result.insertedId) {
+    //       const newQuantity = product.quantity - parseInt(data.orderQuantity);
+    //       const newProduct = { ...product };
+    //       newProduct.quantity = newQuantity;
+    //       reset();
+    //       setProduct(newProduct);
+    //       toast.success("Order placed");
+    //     }
+    //   });
   };
 
   return (
@@ -152,45 +153,28 @@ const Purchase = () => {
               </label>
               <input
                 type="number"
+                name="quantity"
                 placeholder="Quantity"
                 className="input input-bordered w-full "
-                {...register("orderQuantity", {
-                  required: {
-                    value: true,
-                    message: "Quantity is required",
-                  },
-                  min: {
-                    value: minQuantity,
-                    message: `Minimum order quantity ${minQuantity}`,
-                  },
-                  max: {
-                    value: quantity,
-                    message: `Available quantity is ${quantity}`,
-                  },
-                })}
+                value={inputQuantity}
+                onChange={(e) => setInputQuantity(e.target.value)}
               />
               <label className="label">
-                {errors.orderQuantity?.type === "required" && (
+                {+inputQuantity > +quantity && (
                   <span className="label-text-alt text-red-500">
-                    {errors.orderQuantity.message}
+                    Available quantity is {quantity}
                   </span>
                 )}
-                {errors.orderQuantity?.type === "min" && (
+                {+inputQuantity < +minQuantity && (
                   <span className="label-text-alt text-red-500">
-                    {errors.orderQuantity.message}
-                  </span>
-                )}
-                {errors.orderQuantity?.type === "max" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.orderQuantity.message}
+                    Minimum order quantity is {minQuantity}
                   </span>
                 )}
               </label>
             </div>
             <input
               disabled={
-                parseInt(getValues("orderQuantity")) > quantity ||
-                parseInt(getValues("orderQuantity")) < minQuantity
+                +inputQuantity > +quantity || +inputQuantity < +minQuantity
               }
               type="submit"
               className="btn btn-success w-full mt-5"

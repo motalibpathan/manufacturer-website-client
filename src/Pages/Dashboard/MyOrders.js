@@ -14,7 +14,7 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery(["orders", user.email], () =>
-    fetch(`http://localhost:5000/order/${user.email}`, {
+    fetch(`http://localhost:5000/order?email=${user.email}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -45,7 +45,7 @@ const MyOrders = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order, index) => (
+              {orders?.map((order, index) => (
                 <UserOrderRow
                   key={order._id}
                   order={order}

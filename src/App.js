@@ -19,7 +19,9 @@ import Login from "./Pages/Login/Login";
 import RequireAdmin from "./Pages/Login/RequireAdmin";
 import RequireAuth from "./Pages/Login/RequireAuth";
 import SignUp from "./Pages/Login/SignUp";
+import Footer from "./Pages/Shared/Footer";
 import Navbar from "./Pages/Shared/Navbar";
+import NotFound from "./Pages/Shared/NotFound";
 
 export const UserContext = createContext();
 
@@ -86,7 +88,9 @@ function App() {
             }
           ></Route>
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
       <ToastContainer />
     </UserContext.Provider>
   );

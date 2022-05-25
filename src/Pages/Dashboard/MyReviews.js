@@ -34,8 +34,8 @@ const MyReviews = () => {
   };
   return (
     <div>
-      <h1 className="font-2xl font-bold mb-5">Add a Review</h1>
-      <form onSubmit={handleAddReview} className="p-5 bg-white w-full">
+      <h1 className="text-2xl font-bold mb-5">Add a Review</h1>
+      <form onSubmit={handleAddReview} className="lg:p-10 p-5 bg-white w-full">
         <div class="form-control w-full max-w-xs">
           <label class="label">
             <span class="label-text">Pick a rating</span>

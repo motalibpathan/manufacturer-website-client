@@ -66,7 +66,7 @@ const MyProfile = () => {
 
   return (
     <div>
-      <h1 className="text-xl font-bold mb-5">My profile</h1>
+      <h1 className="text-2xl font-bold mb-5">My profile</h1>
       {!editable ? (
         <ProfileInfo
           user={user}

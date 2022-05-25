@@ -24,7 +24,10 @@ const Products = () => {
 
   return (
     <div className="md:container mx-auto p-5">
-      <h1 className="text-3xl font-bold mb-5">All Tools</h1>
+      <h1 className="text-3xl font-bold mb-3">All Tools</h1>
+      <div className="h-2 bg-gray-500 w-full mb-10">
+        <div className="h-2 bg-success w-1/5 "></div>
+      </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 lg:gap-10">
         {products.map((product) => (
           <ProductCard key={product._id} product={product} />

@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { toast } from "react-toastify";
+import { UserContext } from "../../App";
 
 const MyReviews = () => {
+  const [user] = useContext(UserContext);
+
   const handleAddReview = (event) => {
     event.preventDefault();
     const rating = event.target.rating.value;
     const description = event.target.description.value;
-    const review = { rating, description };
+    const review = {
+      rating,
+      description,
+      customerName: user.displayName,
+      email: user.email,
+    };
+    console.log(review);
     fetch(`http://localhost:5000/review`, {
       method: "POST",
       headers: {

@@ -1,8 +1,29 @@
-# Getting Started with Create React App
+# Spadex Tools
 
 Live site link: [https://manufacture-website-e2667.web.app](https://manufacture-website-e2667.web.app)
 
+## Features and Functionality.
+
+- Login authentication with firebase also use google sign in.
+- Fully responsive, Home page has navbar, banner, All tools, Business Summary, Review overview, contact and footer section.
+- User and Admin different Dashboard
+- User can update profile info, place order and add a review also can payment with credit card
+- Admin can make admin, cancel and shipped order, Add product and manage products
+
+## Technology used.
+
+- React JS, JavaScript
+- Tailwind CSS, Daisyui
+- Firebase
+- React Router, Recharts
+- React Query, React Toastify
+- React hook form, React Firebase Hooks
+- Font Awesome icon
+- Stripe payment
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# Getting Started with Create React App
 
 ## Available Scripts
 

@@ -21,7 +21,7 @@ const OrderRow = ({ index, order, setDeletingOrder, refetch }) => {
 
   const handleOrderShipped = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/updateOrder/${id}`, {
+    fetch(`https://spadex-tools.herokuapp.com/updateOrder/${id}`, {
       method: "PATCH",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

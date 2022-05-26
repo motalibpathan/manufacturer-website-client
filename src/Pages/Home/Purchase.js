@@ -19,7 +19,7 @@ const Purchase = () => {
   } = useForm();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${id}`)
+    fetch(`https://spadex-tools.herokuapp.com/product/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
@@ -48,7 +48,7 @@ const Purchase = () => {
       productImg: image,
     };
 
-    fetch(`http://localhost:5000/order`, {
+    fetch(`https://spadex-tools.herokuapp.com/order`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

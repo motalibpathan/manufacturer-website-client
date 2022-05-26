@@ -14,7 +14,7 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery(["orders", user.email], () =>
-    fetch(`http://localhost:5000/order?email=${user.email}`, {
+    fetch(`https://spadex-tools.herokuapp.com/order?email=${user.email}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

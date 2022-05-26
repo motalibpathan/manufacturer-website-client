@@ -16,7 +16,7 @@ const MyReviews = () => {
       email: user.email,
     };
     console.log(review);
-    fetch(`http://localhost:5000/review`, {
+    fetch(`https://spadex-tools.herokuapp.com/review`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

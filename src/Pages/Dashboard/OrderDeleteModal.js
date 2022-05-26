@@ -6,7 +6,7 @@ const OrderDeleteModal = ({ deletingOrder, setDeletingOrder, refetch }) => {
     deletingOrder;
 
   const handleDeleteOrder = (id) => {
-    fetch(`http://localhost:5000/order/${id}`, {
+    fetch(`https://spadex-tools.herokuapp.com/order/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

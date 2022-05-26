@@ -9,7 +9,7 @@ const DeleteProductModal = ({
   const { _id, name } = selectedProduct;
 
   const handleDeleteProduct = (id) => {
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://spadex-tools.herokuapp.com/product/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

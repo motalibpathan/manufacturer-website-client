@@ -6,7 +6,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:5000/product?size=6`)
+    fetch(`https://spadex-tools.herokuapp.com/product?size=6`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

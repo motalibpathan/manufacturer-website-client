@@ -32,7 +32,7 @@ const AddProduct = () => {
             quantity: data.quantity,
             unitPrice: data.unitPrice,
           };
-          fetch(`http://localhost:5000/product`, {
+          fetch(`https://spadex-tools.herokuapp.com/product`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

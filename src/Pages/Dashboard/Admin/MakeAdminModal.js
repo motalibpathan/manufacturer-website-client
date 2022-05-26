@@ -5,7 +5,7 @@ const MakeAdminModal = ({ selectedUser, setSelectedUser, refetch }) => {
   const { email } = selectedUser;
 
   const handleMakeAdmin = (email) => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://spadex-tools.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

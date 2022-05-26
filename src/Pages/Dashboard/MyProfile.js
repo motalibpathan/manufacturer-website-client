@@ -93,7 +93,7 @@ const MyProfile = () => {
                 type="text"
                 name="phone"
                 placeholder="Your phone"
-                class="input input-bordered input-success w-full max-w-xs border-2"
+                className="input input-bordered input-success w-full max-w-xs border-2"
                 required
               />
             </div>
@@ -103,7 +103,7 @@ const MyProfile = () => {
                 type="text"
                 name="education"
                 placeholder="Your education"
-                class="input input-bordered input-success w-full max-w-xs border-2"
+                className="input input-bordered input-success w-full max-w-xs border-2"
                 required
               />
             </div>
@@ -113,7 +113,7 @@ const MyProfile = () => {
                 type="text"
                 name="location"
                 placeholder="Your Address"
-                class="input input-bordered input-success w-full max-w-xs border-2"
+                className="input input-bordered input-success w-full max-w-xs border-2"
                 required
               />
             </div>
@@ -123,7 +123,7 @@ const MyProfile = () => {
                 type="text"
                 name="linkedin"
                 placeholder="Your Linkedin profile link"
-                class="input input-bordered input-success w-full max-w-xs border-2"
+                className="input input-bordered input-success w-full max-w-xs border-2"
                 required
               />
             </div>

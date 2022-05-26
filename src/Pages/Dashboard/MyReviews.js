@@ -36,11 +36,11 @@ const MyReviews = () => {
     <div>
       <h1 className="text-2xl font-bold mb-5">Add a Review</h1>
       <form onSubmit={handleAddReview} className="lg:p-10 p-5 bg-white w-full">
-        <div class="form-control w-full max-w-xs">
-          <label class="label">
-            <span class="label-text">Pick a rating</span>
+        <div className="form-control w-full max-w-xs">
+          <label className="label">
+            <span className="label-text">Pick a rating</span>
           </label>
-          <select name="rating" class="select select-bordered">
+          <select name="rating" className="select select-bordered">
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
@@ -48,13 +48,13 @@ const MyReviews = () => {
             <option value={5}>5</option>
           </select>
         </div>
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text">Description</span>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Description</span>
           </label>
           <textarea
             name="description"
-            class="textarea textarea-bordered h-24"
+            className="textarea textarea-bordered h-24"
             placeholder="Description"
           ></textarea>
         </div>

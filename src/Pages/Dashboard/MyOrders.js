@@ -31,8 +31,8 @@ const MyOrders = () => {
     <div>
       <h1 className="text-2xl font-bold mb-5">Orders</h1>
       <div>
-        <div class="overflow-x-auto bg-white">
-          <table class="table w-full ">
+        <div className="overflow-x-auto bg-white">
+          <table className="table w-full ">
             <thead className="text-left">
               <tr>
                 <th className="capitalize text-md">#</th>

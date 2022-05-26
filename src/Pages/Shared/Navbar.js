@@ -93,7 +93,7 @@ const Navbar = () => {
       <div className="navbar-end lg:hidden">
         <label
           htmlFor="dashboard-drawer"
-          class="btn btn-ghost drawer-button lg:hidden"
+          className="btn btn-ghost drawer-button lg:hidden"
         >
           {menuIcon}
         </label>

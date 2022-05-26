@@ -25,8 +25,8 @@ const MakeAdmin = () => {
   return (
     <div>
       <h1 className="text-xl font-bold my-3"> Make Admin </h1>
-      <div class="overflow-x-auto bg-white">
-        <table class="table w-full ">
+      <div className="overflow-x-auto bg-white">
+        <table className="table w-full ">
           <thead className="text-left">
             <tr>
               <th className="capitalize text-md">#</th>

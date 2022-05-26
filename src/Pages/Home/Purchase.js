@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { UserContext } from "../../App";
 import Loading from "../Shared/Loading";
 
@@ -14,8 +15,6 @@ const Purchase = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
-    getValues,
     reset,
   } = useForm();
 
@@ -27,7 +26,7 @@ const Purchase = () => {
         setInputQuantity(data.minQuantity);
         setDataLoading(false);
       });
-  }, [id, setValue]);
+  }, [id]);
 
   if (dataLoading) {
     return <Loading />;
@@ -48,27 +47,26 @@ const Purchase = () => {
       productName: name,
       productImg: image,
     };
-    console.log(order);
 
-    // fetch(`http://localhost:5000/order`, {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    //   },
-    //   body: JSON.stringify(order),
-    // })
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    //     if (result.insertedId) {
-    //       const newQuantity = product.quantity - parseInt(data.orderQuantity);
-    //       const newProduct = { ...product };
-    //       newProduct.quantity = newQuantity;
-    //       reset();
-    //       setProduct(newProduct);
-    //       toast.success("Order placed");
-    //     }
-    //   });
+    fetch(`http://localhost:5000/order`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.insertedId) {
+          const newQuantity = product.quantity - parseInt(inputQuantity);
+          const newProduct = { ...product };
+          newProduct.quantity = newQuantity;
+          reset();
+          setProduct(newProduct);
+          toast.success("Order placed");
+        }
+      });
   };
 
   return (

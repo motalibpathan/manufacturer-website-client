@@ -28,26 +28,26 @@ const MakeAdminModal = ({ selectedUser, setSelectedUser, refetch }) => {
 
   return (
     <div>
-      <input type="checkbox" id="admin-delete-modal" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-          <h3 class="font-bold text-lg">Are you sure?</h3>
-          <p class="py-4">
+      <input type="checkbox" id="admin-delete-modal" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Are you sure?</h3>
+          <p className="py-4">
             Confirm <span className="text-success font-bold">{email}</span> as
             an admin!
           </p>
-          <div class="modal-action">
+          <div className="modal-action">
             <label
               onClick={() => setSelectedUser(null)}
               htmlFor="admin-delete-modal"
-              class="btn btn-error"
+              className="btn btn-error"
             >
               Cancel
             </label>
             <label
               onClick={() => handleMakeAdmin(email)}
               htmlFor="admin-delete-modal"
-              class="btn btn-success cursor-pointer"
+              className="btn btn-success cursor-pointer"
             >
               Confirm
             </label>

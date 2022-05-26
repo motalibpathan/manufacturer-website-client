@@ -1,4 +1,8 @@
-import { faCreditCard, faMoneyBill } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleCheck,
+  faCreditCard,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -29,8 +33,8 @@ const UserOrderRow = ({ index, order, setDeletingOrder }) => {
       <td className="p-5 border">
         {status === "pending" || status === "approved" ? (
           <>
-            <span className="border bg-green-50 py-2 px-5 rounded-lg">
-              <FontAwesomeIcon className="mr-2" icon={faMoneyBill} /> Paid
+            <span className="badge badge-success">
+              <FontAwesomeIcon className="mr-2" icon={faCircleCheck} /> Paid
             </span>
             <p className="mt-2">
               Transaction id: <span className="font-bold">{transactionId}</span>
@@ -38,18 +42,16 @@ const UserOrderRow = ({ index, order, setDeletingOrder }) => {
           </>
         ) : (
           <div>
-            <span className="btn btn-error btn-outline mr-2">
-              <label
-                htmlFor="order-delete-modal"
-                className="cursor-pointer"
-                onClick={() => setDeletingOrder(order)}
-              >
-                <FontAwesomeIcon className="mr-2" icon={faCreditCard} /> Cancel
-              </label>
-            </span>
+            <label
+              htmlFor="order-delete-modal"
+              className="cursor-pointer btn btn-sm btn-error btn-outline mr-2"
+              onClick={() => setDeletingOrder(order)}
+            >
+              <FontAwesomeIcon className="mr-2" icon={faXmark} /> Cancel
+            </label>
             <button
               onClick={() => navigate(`/dashboard/payment/${_id}`)}
-              className="btn btn-outline btn-success"
+              className="btn btn-sm btn-outline btn-success"
             >
               <FontAwesomeIcon className="mr-2" icon={faCreditCard} /> Pay
             </button>

@@ -32,25 +32,29 @@ const DeleteProductModal = ({
 
   return (
     <div>
-      <input type="checkbox" id="product-delete-modal" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-          <h3 class="font-bold text-lg">Confirm Delete?</h3>
-          <p class="py-4">
+      <input
+        type="checkbox"
+        id="product-delete-modal"
+        className="modal-toggle"
+      />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Confirm Delete?</h3>
+          <p className="py-4">
             Delete <span className="text-success font-bold">{name}</span> ?
           </p>
-          <div class="modal-action">
+          <div className="modal-action">
             <label
               onClick={() => setSelectedProduct(null)}
               htmlFor="product-delete-modal"
-              class="btn btn-error"
+              className="btn btn-error"
             >
               Cancel
             </label>
             <label
               onClick={() => handleDeleteProduct(_id)}
               htmlFor="product-delete-modal"
-              class="btn btn-success"
+              className="btn btn-success"
             >
               Confirm
             </label>

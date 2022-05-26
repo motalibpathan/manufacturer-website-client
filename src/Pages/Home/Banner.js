@@ -10,7 +10,7 @@ const Banner = () => {
       >
         <div className="lg:ml-10 p-10">
           <p className="text-success text-3xl mb-5">Upto 30% Off</p>
-          <div class="bg-white h-1 mb-3 w-24"></div>
+          <div className="bg-white h-1 mb-3 w-24"></div>
           <h1 className="text-3xl lg:text-4xl font-bold ">
             Best Tools Collection
           </h1>

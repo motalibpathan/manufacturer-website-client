@@ -57,14 +57,14 @@ const AddProduct = () => {
       <h1 className="text-2xl font-bold mb-2">Add a product</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="lg:w-4/5">
         <div className="w-full md:flex md:space-x-5 ">
-          <div class="form-control w-full ">
-            <label class="label">
-              <span class="label-text font-bold">Product Title</span>
+          <div className="form-control w-full ">
+            <label className="label">
+              <span className="label-text font-bold">Product Title</span>
             </label>
             <input
               type="text"
               placeholder="Product name"
-              class="input input-bordered border-2 border-success w-full "
+              className="input input-bordered border-2 border-success w-full "
               {...register("name", {
                 required: {
                   value: true,
@@ -80,13 +80,13 @@ const AddProduct = () => {
               )}
             </label>
           </div>
-          <div class="form-control w-full ">
-            <label class="label">
-              <span class="label-text font-bold">Product Image</span>
+          <div className="form-control w-full ">
+            <label className="label">
+              <span className="label-text font-bold">Product Image</span>
             </label>
             <input
               type="file"
-              class="input input-bordered border-2 border-success w-full pt-1"
+              className="input input-bordered border-2 border-success w-full pt-1"
               {...register("image", {
                 required: {
                   value: true,
@@ -104,12 +104,12 @@ const AddProduct = () => {
           </div>
         </div>
 
-        <div class="form-control w-full ">
-          <label class="label">
-            <span class="label-text font-bold">Product Description</span>
+        <div className="form-control w-full ">
+          <label className="label">
+            <span className="label-text font-bold">Product Description</span>
           </label>
           <textarea
-            class="textarea border-success w-full border-2"
+            className="textarea border-success w-full border-2"
             placeholder="Description"
             {...register("description", {
               required: {
@@ -127,14 +127,16 @@ const AddProduct = () => {
           </label>
         </div>
         <div className="w-full md:flex md:space-x-5">
-          <div class="form-control w-full ">
-            <label class="label">
-              <span class="label-text font-bold">Minimum Order Quantity</span>
+          <div className="form-control w-full ">
+            <label className="label">
+              <span className="label-text font-bold">
+                Minimum Order Quantity
+              </span>
             </label>
             <input
               type="number"
               placeholder="Minimum Quantity"
-              class="input input-bordered border-2 border-success  w-full "
+              className="input input-bordered border-2 border-success  w-full "
               {...register("minQuantity", {
                 required: {
                   value: true,
@@ -150,14 +152,14 @@ const AddProduct = () => {
               )}
             </label>
           </div>
-          <div class="form-control w-full ">
-            <label class="label">
-              <span class="label-text font-bold">Available Quantity</span>
+          <div className="form-control w-full ">
+            <label className="label">
+              <span className="label-text font-bold">Available Quantity</span>
             </label>
             <input
               type="number"
               placeholder="Quantity"
-              class="input input-bordered border-2 border-success  w-full "
+              className="input input-bordered border-2 border-success  w-full "
               {...register("quantity", {
                 required: {
                   value: true,
@@ -173,14 +175,14 @@ const AddProduct = () => {
               )}
             </label>
           </div>
-          <div class="form-control w-full ">
-            <label class="label">
-              <span class="label-text font-bold">Per Unit Price</span>
+          <div className="form-control w-full ">
+            <label className="label">
+              <span className="label-text font-bold">Per Unit Price</span>
             </label>
             <input
               type="number"
               placeholder="Price"
-              class="input input-bordered border-2 border-success w-full "
+              className="input input-bordered border-2 border-success w-full "
               {...register("unitPrice", {
                 required: {
                   value: true,

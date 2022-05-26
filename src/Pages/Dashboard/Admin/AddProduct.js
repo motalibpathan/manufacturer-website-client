@@ -117,6 +117,7 @@ const AddProduct = () => {
                 message: "Description is Required",
               },
             })}
+            rows={5}
           ></textarea>
           <label className="label">
             {errors.description?.type === "required" && (

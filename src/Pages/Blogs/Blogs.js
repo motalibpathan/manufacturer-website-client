@@ -7,8 +7,8 @@ const Blogs = () => {
       <h2 className="my-3 font-bold text-xl">
         14.1 How will you improve the performance of a React Application?
       </h2>
-      <p>
-        Answer:
+      <div>
+        <p>Answer</p>
         <ol>
           <li>
             1. Try to keep local state in local component instead of parents
@@ -24,7 +24,7 @@ const Blogs = () => {
           </li>
           <li>5. Update component only when necessary and required</li>
         </ol>{" "}
-      </p>
+      </div>
       <h2 className="my-3 font-bold text-xl">
         14.2 What are the different ways to manage a state in a React
         application?
@@ -72,8 +72,8 @@ const Blogs = () => {
         name?
       </h2>
 
-      <p>
-        Answer:
+      <div>
+        <p>Answer:</p>
         <br />
         <div className="bg-gray-100 p-2">
           <span>
@@ -86,7 +86,7 @@ const Blogs = () => {
             console.log(result);`}
           </span>
         </div>
-      </p>
+      </div>
 
       <h2 className="my-3 font-bold text-xl">
         14.6 What is a unit test? Why should write unit tests?

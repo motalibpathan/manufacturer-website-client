@@ -6,7 +6,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:5000/product`)
+    fetch(`http://localhost:5000/product?size=6`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -23,7 +23,7 @@ const Products = () => {
   }
 
   return (
-    <div className="md:container mx-auto p-5">
+    <div className="md:container mx-auto p-5 my-10">
       <h1 className="text-3xl font-bold mb-3">All Tools</h1>
       <div className="h-2 bg-gray-500 w-full mb-10">
         <div className="h-2 bg-success w-1/5 "></div>

@@ -26,7 +26,7 @@ const UserOrderRow = ({ index, order, setDeletingOrder }) => {
       <td className="p-5 border">
         <img width={60} src={productImg} alt="" />
       </td>
-      <td className="p-5 border">{productName} </td>
+      <td className="p-5 border">{productName.slice(0, 30) + "..."} </td>
       <td className="p-5 border">{email} </td>
       <td className="p-5 border">{orderQuantity} </td>
       <td className="p-5 border">${orderQuantity * unitPrice} </td>
@@ -41,17 +41,17 @@ const UserOrderRow = ({ index, order, setDeletingOrder }) => {
             </p>
           </>
         ) : (
-          <div>
+          <div className="flex flex-col gap-y-3">
             <label
               htmlFor="order-delete-modal"
-              className="cursor-pointer btn btn-sm btn-error btn-outline mr-2"
+              className="cursor-pointer btn btn-sm btn-error btn-outline mr-2 w-28"
               onClick={() => setDeletingOrder(order)}
             >
               <FontAwesomeIcon className="mr-2" icon={faXmark} /> Cancel
             </label>
             <button
               onClick={() => navigate(`/dashboard/payment/${_id}`)}
-              className="btn btn-sm btn-outline btn-success"
+              className="btn btn-sm btn-outline btn-success w-28"
             >
               <FontAwesomeIcon className="mr-2" icon={faCreditCard} /> Pay
             </button>

@@ -83,7 +83,10 @@ const Navbar = () => {
             {menuItems}{" "}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case font-bold text-2xl">
+        <Link
+          to="/"
+          className="btn btn-ghost normal-case font-bold lg:text-2xl text-md"
+        >
           <span className="text-success">Spadex </span> Tools
         </Link>
       </div>

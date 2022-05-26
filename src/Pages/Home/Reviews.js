@@ -10,7 +10,7 @@ const Reviews = () => {
     <Loading />;
   }
   return (
-    <div className="md:container mx-auto p-5 ">
+    <div className="md:container mx-auto p-5 mt-10">
       <h1 className="text-3xl font-bold mb-3">What our clients say</h1>
       <div className="h-2 bg-gray-500 w-full mb-10">
         <div className="h-2 bg-success w-1/5 "></div>

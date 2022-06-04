@@ -6,7 +6,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    fetch(`https://spadex-tools.herokuapp.com/product?size=6`)
+    fetch(`https://spadex-tools.herokuapp.com/product?size=8`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -28,7 +28,7 @@ const Products = () => {
       <div className="h-2 bg-gray-500 w-full mb-10">
         <div className="h-2 bg-success w-1/5 "></div>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 lg:gap-10">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5 lg:gap-10">
         {products.map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}

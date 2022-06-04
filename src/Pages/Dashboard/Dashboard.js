@@ -6,15 +6,18 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
+import { UserContext } from "../../App";
 import auth from "../../firebase.init";
 import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
+  const [currentUser] = useContext(UserContext);
+  console.log(currentUser, user, admin);
   return (
     <div className="drawer drawer-mobile">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
@@ -27,7 +30,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side shadow-2xl">
         <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-80 bg-green-100 text-base-content">
+        <ul className="menu p-4 overflow-y-auto w-60 bg-green-100 text-base-content">
           {!admin && (
             <>
               <li>

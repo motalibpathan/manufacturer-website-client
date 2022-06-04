@@ -33,10 +33,9 @@ const AllOrders = () => {
             <thead className="text-left">
               <tr>
                 <th className="capitalize text-md">#</th>
-                <th className="capitalize text-md">Image</th>
-                <th className="capitalize text-md">Product Name</th>
+                <th className="capitalize text-md">Customer Name</th>
                 <th className="capitalize text-md">Email</th>
-                <th className="capitalize text-md">Quantity</th>
+                <th className="capitalize text-md">Status</th>
                 <th className="capitalize text-md">Total Amount</th>
                 <th className="capitalize text-md">Action</th>
               </tr>

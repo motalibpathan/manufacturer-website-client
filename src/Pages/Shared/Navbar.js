@@ -1,4 +1,5 @@
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
@@ -57,8 +58,12 @@ const Navbar = () => {
             </span>
           </li>
           <li>
-            <button className="font-bold" onClick={() => signOut(auth)}>
-              Logout
+            <button
+              title="logout"
+              className="font-bold"
+              onClick={() => signOut(auth)}
+            >
+              <FontAwesomeIcon icon={faRightFromBracket} />
             </button>
           </li>
         </>
@@ -70,7 +75,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar border-b-2 border-gray-100">
+    <div className=" navbar border-b-2 border-gray-100 ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">

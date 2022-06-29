@@ -3,12 +3,12 @@ import banner from "../../assets/banner.png";
 
 const Banner = () => {
   return (
-    <div className="bg-gray-900 text-white">
-      <div className="md:container md:mx-auto">
-        <div
-          className="w-full h-[600px] bg-no-repeat bg-cover text-white flex items-center lg:justify-start justify-center"
-          style={{ backgroundImage: `url(${banner})` }}
-        >
+    <div
+      className=" text-white bg-no-repeat bg-cover"
+      style={{ backgroundImage: `url(${banner})` }}
+    >
+      <div className="max-w-[1140px] md:mx-auto">
+        <div className="w-full h-[700px]  text-white flex items-center lg:justify-start justify-center">
           <div className="lg:ml-10 p-10">
             <p className="text-success text-3xl mb-5">Upto 30% Off</p>
             <div className="bg-white h-1 mb-3 w-24"></div>

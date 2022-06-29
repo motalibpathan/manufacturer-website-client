@@ -1,6 +1,14 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    fontFamily: {
+      // 'sans': ['ui-sans-serif', 'system-ui'],
+      sans: ["Roboto", "sans-serif"],
+      serif: ["ui-serif", "Georgia"],
+      mono: ["ui-monospace", "SFMono-Regular"],
+      title: ["Kdam Thmor Pro", "sans-serif"],
+      body: ['"Open Sans"'],
+    },
     extend: {},
   },
   plugins: [require("daisyui")],
